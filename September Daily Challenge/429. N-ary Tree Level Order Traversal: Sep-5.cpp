@@ -22,7 +22,8 @@ The total number of nodes is between [0, 104] */
 //code
 class Solution {
 public:
-    vector<vector<int>> levelOrder(Node* root) {           
+    vector<vector<int>> levelOrder(Node* root) {
+
         if (root==NULL) return {};
 
         vector<vector<int>>ans;
@@ -30,15 +31,16 @@ public:
         q.push(root);
         while (!q.empty()) {
             int size = q.size();
-            ans.push_back({});
+            vector<int>temp;
             while (size--) {
                 Node* node = q.front(); 
                 q.pop();
-                ans.back().push_back(node->val);
                 for (Node* child : node->children) {
                     q.push(child);
                 }
+                temp.push_back(node->val);
             }
+            ans.push_back(temp);
         }
         return ans;
     }
