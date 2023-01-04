@@ -24,6 +24,7 @@ Constraints:
 1 <= tasks.length <= 105
 1 <= tasks[i] <= 109 */
 
+// For detailed explaination : https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/solutions/2995189/easiest-c-solution-with-detailed-explanation/
 //code
 class Solution {
 public:
@@ -34,11 +35,11 @@ public:
         }
         int ans = 0;
         for(auto it: mp){
-            if(it.second == 1)return -1;
-            else if(it.second%3==0){
+            if(it.second == 1)return -1; // if the frequency is less than 2, return -1
+            else if(it.second%3==0){ // if it is divided by 3, just return the freq/3 which is the number of rounds to complete the taks
                 ans += it.second/3;
             }
-            else{
+            else{ // else there will be two cases, either remainder will be 2 or remainder will be 1, in both the cases add 1 to freq/3.
                 ans += it.second/3 + 1;
             }
         }
